@@ -33,3 +33,13 @@ infrastructure as code, and cloud deployment.
 ## Fun Fact
 
 I also love playing video games on PC during my free time. Feel free to shoot me a message if you wanted to play with me some day.
+
+
+## My Week 2 Infrastructure
+
+ 
+Runner VM: ub-server
+
+Runner IP: 192.168.1.109 #fake ip
+
+Pipeline status: [![Hello Pipeline](https://github.com/cyberwes69/cis-410-cybersecurity-automation/actions/workflows/hello-pipeline.yml/badge.svg)](https://github.com/cyberwes69/cis-410-cybersecurity-automation/actions/workflows/hello-pipeline.yml)
