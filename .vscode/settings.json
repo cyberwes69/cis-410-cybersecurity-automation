@@ -1,5 +1,7 @@
 {
     "github-actions.workflows.pinned.workflows": [
-        ".github/workflows/setup-dev.yml"
+        ".github/workflows/setup-dev.yml",
+        ".github/workflows/setup-staging.yml",
+        ".github/workflows/setup-prod.yml"
     ]
 }
