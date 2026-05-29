@@ -48,6 +48,18 @@ resource "google_compute_subnetwork" "public" {
 }
 
 
+# ── Storage Bucket ───────────────────────────────────────────────────────────
+# A Google Cloud Storage bucket to store application artifacts.
+# This bucket uses the same project and region as the networking module.
+resource "google_storage_bucket" "app_bucket" {
+  name                        = format("%s-%s-bucket", var.project_id, var.vpc_name)
+  location                    = var.region
+  project                     = var.project_id
+  uniform_bucket_level_access = true
+  force_destroy               = false
+}
+
+
 # ── Firewall Rule 1: Allow SSH from your IP only ──────────────────────────────
 # SSH (port 22) is restricted to your specific public IP address.
 #
@@ -130,3 +142,4 @@ resource "google_compute_firewall" "deny_all_ingress" {
   source_ranges = ["0.0.0.0/0"]
   description   = "Explicit deny-all fallback — blocks traffic not matched above"
 }
+
