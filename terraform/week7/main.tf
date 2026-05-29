@@ -32,7 +32,7 @@ terraform {
   # REPLACE: change cis410-yourname-xxxx-tfstate to your actual bucket name.
   # Find it: GCP Console → Cloud Storage → Buckets
   backend "gcs" {
-    bucket = "cis410-yourname-xxxx-tfstate"   # ← replace with your bucket name
+    bucket = "cis410-wesley-tfstate"   # ← replace with your bucket name
     prefix = "terraform/week7"
   }
 
