@@ -1,5 +1,5 @@
 # .github/workflows/terraform-plan.yml
-# ─────────────────────────────────────────────────────────────────────────────
+# ─────────────────────────────────────────────────────────────────[...]
 # Terraform Plan workflow — Week 7
 #
 # Triggers on every push that changes files in terraform/week7/.
@@ -15,7 +15,7 @@
 # NOTE: This workflow only PLANS — it does not apply.
 # Students run terraform apply locally after reviewing the plan.
 # Automated apply (with -auto-approve) is introduced in Week 8.
-# ─────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────[...]
 
 name: Terraform Plan
 
@@ -93,6 +93,8 @@ jobs:
       # ── Step 6: Terraform Plan ─────────────────────────────────────────────
       # Compares the code against the state file and shows what would change.
       # -no-color removes ANSI color codes so the output is readable in logs.
+      # -lock=false prevents state lock contention since plan operations are
+      # read-only and do not modify state. Only apply operations need locks.
       #
       # TF_VAR_ environment variables pass Terraform input variables:
       #   TF_VAR_project_id  → var.project_id in variables.tf
@@ -101,7 +103,7 @@ jobs:
       # These are stored as GitHub Variables (not Secrets) because they are
       # resource identifiers, not credentials.
       - name: Terraform Plan
-        run: terraform plan -no-color
+        run: terraform plan -no-color -lock=false
         working-directory: terraform/week7
         env:
           TF_VAR_project_id: ${{ vars.TF_VAR_PROJECT_ID }}
