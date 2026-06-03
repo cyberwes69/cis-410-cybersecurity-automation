@@ -16,7 +16,7 @@ terraform {
 
   backend "gcs" {
 
-    bucket = "cis410-yourname-xxxx-tfstate"   # same bucket as Week 7
+    bucket = "cis410-wesley-tfstate"   # same bucket as Week 7
 
     prefix = "terraform/week8"                 # different prefix = separate state
 
@@ -71,7 +71,7 @@ data "terraform_remote_state" "week7" {
 
   config = {
 
-    bucket = "cis410-yourname-xxxx-tfstate"   # same bucket
+    bucket = "cis410-wesley-tfstate"   # same bucket
 
     prefix = "terraform/week7"                 # Week 7 prefix
 
