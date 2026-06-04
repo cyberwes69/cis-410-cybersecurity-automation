@@ -1,22 +1,11 @@
-# terraform/week7/outputs.tf
-
-
 output "vpc_name" {
-
-  value = module.networking.vpc_name
-
+  value = google_compute_network.vpc.name
 }
-
-
-output "vpc_id" {
-
-  value = module.networking.vpc_id
-
-}
-
 
 output "subnet_name" {
+  value = google_compute_subnetwork.subnet.name
+}
 
-  value = module.networking.subnet_name
-
+output "firewall_name" {
+  value = google_compute_firewall.allow_ssh.name
 }
