@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
-    bucket = "cis410-wesley-tfstate"
+    bucket = "cis410-wesley-tf-state"
     prefix = "week8"
   }
 
