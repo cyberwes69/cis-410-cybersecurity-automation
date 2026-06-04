@@ -1,83 +1,24 @@
-# Week 6 — First Terraform Configuration
-
-# Creates a Google Cloud Storage bucket in your GCP project
-
-
-variable "project_id" {
-  description = "The GCP project ID"
-  type        = string
-}
-
-
-variable "region" {
-  description = "The GCP region"
-  type        = string
-}
-
-
 terraform {
-
-  required_version = ">= 1.6"
-
-
   required_providers {
-
     google = {
-
-      source  = "hashicorp/google"
-
+      source = "hashicorp/google"
       version = "~> 5.0"
-
     }
-
   }
-
 }
-
 
 provider "google" {
-
   project = var.project_id
-
-  region  = var.region
-
+  region  = "us-central1"
 }
 
+resource "google_storage_bucket" "bucket1" {
+  name     = "${var.project_id}-bucket1"
+  location = "US"
+}
 
-# Google Cloud Storage bucket — used as Terraform state backend in Week 7
-
-resource "google_storage_bucket" "tf_state" {
-
-  name          = "${var.project_id}-tfstate"
-
-  location      = "US"
-
-  force_destroy = true
-
-
-  versioning {
-
-    enabled = true
-
-  }
-
-
-  lifecycle_rule {
-
-    condition {
-
-      num_newer_versions = 5
-
-    }
-
-    action {
-
-      type = "Delete"
-
-    }
-
-  }
-
-
+resource "google_storage_bucket" "bucket2" {
+  name     = "${var.project_id}-bucket2"
+  location = "US"
 }
 
