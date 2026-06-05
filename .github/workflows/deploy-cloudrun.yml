@@ -92,18 +92,13 @@ jobs:
 
           echo "IMAGE_PATH=${IMAGE_PATH}" >> $GITHUB_ENV
 
-      - name: Set IMAGE_PATH for next step
-        run: |
-          PROJECT_ID=$(gcloud config get-value project)
-          echo "IMAGE_PATH=${REGISTRY}/${PROJECT_ID}/${REPO}/${IMAGE}:${{ github.sha }}" >> $GITHUB_ENV
-
 
       # Deploy — mirrors "docker run" from on-premise weeks
 
       - name: Deploy to Cloud Run
         run: |
           gcloud run deploy ${SERVICE} \
-            --image ${{ env.IMAGE_PATH }} \
+            --image ${IMAGE_PATH} \
             --region ${REGION} \
             --platform managed \
             --allow-unauthenticated \
