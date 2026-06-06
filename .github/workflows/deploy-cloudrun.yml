@@ -103,6 +103,14 @@ jobs:
             --platform managed \
             --allow-unauthenticated \
             --max-instances 3 \
+            --cpu 1 \
+            --memory 512Mi \
+            --timeout 300 \
+            --startup-probe-initial-delay 0 \
+            --startup-probe-timeout 60 \
+            --startup-probe-period 10 \
+            --startup-probe-failure-threshold 5 \
+            --http-async-request-limit 50 \
             --quiet
 
 

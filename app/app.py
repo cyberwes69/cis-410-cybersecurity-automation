@@ -3,7 +3,14 @@ import sqlite3
 import socket
 import datetime
 import secrets
-from flask import Flask, request, jsonify, render_template, g
+
+try:
+    # Some editors/linters may not resolve the flask import in virtualenvs; ignore type checks
+    from flask import Flask, request, jsonify, render_template, g  # type: ignore
+except ImportError as e:
+    raise ImportError(
+        "Flask is required to run this application. Install it with 'pip install flask'."
+    ) from e
 
 app = Flask(__name__, static_folder='static')
 
